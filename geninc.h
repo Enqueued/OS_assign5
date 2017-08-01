@@ -16,3 +16,8 @@ struct PCB{
   int Wtime;
 }
 
+void fifo();
+void sjf();
+void rr();
+void pr();
+

@@ -7,5 +7,13 @@
 * should be able to call all the different processes
 ************************************/
 void main (int nargs, char * args[]){
+}
 
+void fifo(){
+}
+void sjf(){
+}
+void rr(){
+}
+void pr(){
 }
