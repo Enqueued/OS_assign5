@@ -14,8 +14,9 @@ struct PCB{
   int cpu;
   int io;
   int Wtime;
-}
+};
 
+void error_exit(char*, int);
 void fifo();
 void sjf();
 void rr();
