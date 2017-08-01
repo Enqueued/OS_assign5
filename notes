@@ -1,0 +1,32 @@
+we are going to declare a data struct PCB
+
+PCB -{ priority, cpu_burst [10|10|10|10], IO_burst [20|20|20], CPU, IO,
+totalWtime}
+
+implement a Ready_Queue as a double linked list
+
+"go, read something, put it there, sleep (not really)"
+
+we also need to mimic the actons made by that guy
+both queues should be managed as a double linked list, wheres the head wheres
+the tail whats inside, how are the protected? get and add are good
+
+what complicates it is the scheduling algorithm 
+
+Total CPU usage time divided by total time<?> should equal cpu utilization
+
+you need a counter to know how many processess you've processed 
+
+waiting time in the ready queue should be a big issue
+how to know how much we waited? 
+cannot solve using global variables
+when joining into the queue get the time, whats the difference between when you
+put it inot the queue and what time it took to launch and everytime there
+after.
+
+turn around time is easy:
+beginning time and ending time for a process
+what is the difference between beginning and ending time divided by num of
+processess is the total turn around time. (remove division to create just turn around time)
+
+
