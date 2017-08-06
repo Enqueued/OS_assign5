@@ -19,7 +19,6 @@ void main (int nargs, char *args[]){
 
   printf("%d : starting args\n", nargs);
   check_args(nargs, args);
-
   printf("Algo: %s\t File: %s\t Quant: %d\n", algo, file, quant);
 
 
@@ -28,8 +27,6 @@ void main (int nargs, char *args[]){
 void check_args( int nargs, char *args[]){
   int i = 0;
   while (i < nargs){
-    /*printf("%s arg %d\n", args[i], i);
-    i++;*/
     //gotta do if-else ladder
     int size = sizeof(args[i]);
     char arg[size];
@@ -42,33 +39,20 @@ void check_args( int nargs, char *args[]){
       algo=malloc(sizeof(args[i]));
       strcpy(algo,args[i]);
       //printf(" [%s], args", algo);
-      //continue;
     }else if(strcmp(arg,"-quantum") == 0){
       i++;
       //printf("%d||i\t", i);
       char *num = args[i];
       quant = atoi(num);
       //printf("%d||Quant || %s :ARGS\t", quant, args[i]);
-      //continue;
     }else if(strcmp(arg, "-input") == 0){
       //printf("%d||i\t", i);
       i++;
       file=malloc(sizeof(args[i]));
       strcpy(file,args[i]);
-      //continue;
     }
     i++;
     //printf("NEW:%d||i\t", i);
     //printf("\n\n yoooooooooooooo::[I: %d][%d : nargs]\n\n", i, nargs);
   }
-}
-
-void fifo(){
-}
-
-void sjf(){
-}
-void rr(){
-}
-void pr(){
 }
