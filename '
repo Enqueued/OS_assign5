@@ -1,7 +1,7 @@
 #include "geninc.h"
 int quant;
-char *file;
-char *algo;
+char * file;
+char * algo;
 
 void error_exit(char *string, int flag){
   fprintf(stderr, string);
@@ -17,7 +17,6 @@ void main (int nargs, char *args[]){
     error_exit("Not Enough Variables", -1);
   }
 
-  printf("%d : starting args\n", nargs);
   check_args(nargs, args);
 
   printf("Algo: %s\t File: %s\t Quant: %d\n", algo, file, quant);
@@ -28,38 +27,22 @@ void main (int nargs, char *args[]){
 void check_args( int nargs, char *args[]){
   int i = 0;
   while (i < nargs){
-    /*printf("%s arg %d\n", args[i], i);
-    i++;*/
     //gotta do if-else ladder
-    int size = sizeof(args[i]);
-    char arg[size];
-    strcpy(arg, args[i]);
-    printf("arg: %s\n", arg);
-
+    char arg[sizeof(&test[i])];
+    strcpy(arg, test[i]);
     if(strcmp(arg,"-algo") == 0){
-      //printf("%d||i\t", i);
-      i++;
-      algo=malloc(sizeof(args[i]));
-      strcpy(algo,args[i]);
-      //printf(" [%s], args", algo);
-      //continue;
+        printf("in the ifs");
+        algo = &test[i++];
+        break;
     }else if(strcmp(arg,"-quantum") == 0){
-      i++;
-      //printf("%d||i\t", i);
-      char *num = args[i];
-      quant = atoi(num);
-      //printf("%d||Quant || %s :ARGS\t", quant, args[i]);
-      //continue;
+        quant = atoi(&test[i++]);
+        break;
     }else if(strcmp(arg, "-input") == 0){
-      //printf("%d||i\t", i);
+        file = &test[i++];
+        break;
+    }else{
       i++;
-      file=malloc(sizeof(args[i]));
-      strcpy(file,args[i]);
-      //continue;
     }
-    i++;
-    //printf("NEW:%d||i\t", i);
-    //printf("\n\n yoooooooooooooo::[I: %d][%d : nargs]\n\n", i, nargs);
   }
 }
 

@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>
+#include <pthread.h>
+#include <semaphore.h>
+#include <string.h>
 
 /**********PCB**
 * should be used to created the pcb and
@@ -21,4 +24,5 @@ void fifo();
 void sjf();
 void rr();
 void pr();
+void check_args(int, char *args[]);
 
