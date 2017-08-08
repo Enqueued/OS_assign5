@@ -55,4 +55,13 @@ void check_args( int nargs, char *args[]){
     //printf("NEW:%d||i\t", i);
     //printf("\n\n yoooooooooooooo::[I: %d][%d : nargs]\n\n", i, nargs);
   }
+  decision_time();
+}
+
+void decision_time(){
+  if(strcpy(algo, "fifo")==0){
+    fifo(file, thread);
+  }else if(strcpy(algo, "rr")==0){
+    rr(file, thread);
+  }
 }

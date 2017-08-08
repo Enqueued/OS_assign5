@@ -20,7 +20,7 @@ struct PCB{
 };
 
 void error_exit(char*, int);
-void fifo();
+void fifo(char*, pthread_t);
 void sjf();
 void rr();
 void pr();
