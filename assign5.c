@@ -58,6 +58,9 @@ void check_args( int nargs, char *args[]){
 }
 
 void decision_time(FILE * fp){
+  pthread_t read_file;
+  pthread_create(&read_file, NULL, reading, fp, ready_q);
+  pthread_join(read_file, NULL);
   if(strcpy(algo, "fifo")==0){
     fifo(fp, running, ready_q);
   }else if(strcpy(algo, "rr")==0){

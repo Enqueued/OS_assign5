@@ -4,7 +4,7 @@
 #include <pthread.h>
 #include <semaphore.h>
 #include <string.h>
-
+#include <unistd.h>
 /**********PCB**
 * should be used to created the pcb and
 * hold the ustilities that the pcb will be using
@@ -20,9 +20,11 @@ struct PCB{
 };
 
 FILE * file_open();
+struct PCB init_PCB();
 void error_exit(char*, int);
-void fifo(FILE *, struct PCB []);
+void *reading(FILE *, struct PCB []);
 void sjf();
+void fifo(FILE *);
 void rr();
 void pr();
 void decision_time(FILE * fp); //name to be changed at a later date
