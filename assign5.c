@@ -2,6 +2,8 @@
 int quant;
 char *file;
 char *algo;
+pthread_t read_file;
+struct PCB ready_q[2048];
 
 void error_exit(char *string, int flag){
   fprintf(stderr, string);
@@ -20,8 +22,6 @@ void main (int nargs, char *args[]){
   printf("%d : starting args\n", nargs);
   check_args(nargs, args);
   printf("Algo: %s\t File: %s\t Quant: %d\n", algo, file, quant);
-
-
 }
 
 void check_args( int nargs, char *args[]){
@@ -52,16 +52,35 @@ void check_args( int nargs, char *args[]){
       strcpy(file,args[i]);
     }
     i++;
-    //printf("NEW:%d||i\t", i);
-    //printf("\n\n yoooooooooooooo::[I: %d][%d : nargs]\n\n", i, nargs);
   }
-  decision_time();
+  FILE * fp = file_open();
+  decision_time(fp);
 }
 
-void decision_time(){
+void decision_time(FILE * fp){
   if(strcpy(algo, "fifo")==0){
-    fifo(file, thread);
+    fifo(fp, running, ready_q);
   }else if(strcpy(algo, "rr")==0){
     rr(file, thread);
+  }
+}
+
+FILE * file_open(){
+  FILE *fp;
+  fp = fopen(file, "r");
+  return fp;
+}
+
+void file_close(FILE * fp){
+  fclose(fp);
+  fprintf(stderr, "Closed file");
+}
+
+char * get_next_word(FILE * fp){
+  char * string;
+  if(fscanf(fp, string)){
+    return string;
+  } else {
+    return NULL;
   }
 }

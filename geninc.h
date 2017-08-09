@@ -12,17 +12,20 @@
 ***************/
 struct PCB{
   int priority;
-  int cpu_burst[4];
-  int io_burst[4];
+  int cpu_burst[];
+  int io_burst[];
   int cpu;
   int io;
   int Wtime;
 };
 
+FILE * file_open();
 void error_exit(char*, int);
-void fifo(char*, pthread_t);
+void fifo(FILE *, struct PCB []);
 void sjf();
 void rr();
 void pr();
+void decision_time(FILE * fp); //name to be changed at a later date
 void check_args(int, char *args[]);
 
+char *get_next_word(FILE *);
